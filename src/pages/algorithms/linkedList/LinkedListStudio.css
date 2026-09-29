@@ -1,0 +1,279 @@
+/* ═══════════════════════════════════════════════════════════
+   LinkedListStudio.css — Shared styles for Linked List Studio pages
+   (SinglyInsertDelete, Reverse, DetectCycle)
+═══════════════════════════════════════════════════════════ */
+
+.ll-studio-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem;
+}
+
+/* Telemetry Info Strip */
+
+.ll-info-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .ll-info-strip {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ll-info-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: border-color var(--transition);
+}
+
+.ll-info-card__label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.ll-info-card__value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-primary);
+}
+
+.ll-info-card--accent .ll-info-card__value {
+  color: var(--accent);
+}
+
+.ll-info-card--green .ll-info-card__value {
+  color: var(--viz-sorted);
+}
+
+.ll-info-card--amber .ll-info-card__value {
+  color: var(--viz-comparing);
+}
+
+/* Canvas Card */
+
+.ll-canvas-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Narrator Banner */
+
+.ll-narrator {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.ll-narrator--done {
+  border-left-color: var(--viz-sorted);
+}
+
+.ll-narrator--error {
+  border-left-color: #ef4444;
+}
+
+.ll-narrator__text {
+  margin: 0;
+}
+
+/* Warning / Error banner */
+
+.ll-error-banner {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* Operations Workspace Bar (Tabs) */
+
+.ll-ops-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.35rem;
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
+}
+
+.ll-op-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.ll-op-tab:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+.ll-op-tab--active {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+.ll-op-tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Control Panels */
+
+.ll-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ll-panel__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ll-panel__group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ll-panel__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 60px;
+}
+
+.ll-input {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 0.45rem 0.7rem;
+  font-size: 0.88rem;
+  font-family: 'JetBrains Mono', monospace;
+  width: 90px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.ll-input:focus {
+  border-color: var(--accent);
+}
+
+.ll-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Action Buttons */
+
+.ll-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.48rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  user-select: none;
+}
+
+.ll-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.ll-btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.ll-btn--primary:hover:not(:disabled) {
+  background: var(--accent-hover, var(--accent));
+  color: #fff;
+}
+
+.ll-btn--danger:hover:not(:disabled) {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.ll-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Complexity and Pseudocode Section Grid */
+
+.ll-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 860px) {
+  .ll-bottom-grid {
+    grid-template-columns: 3fr 2fr;
+  }
+}

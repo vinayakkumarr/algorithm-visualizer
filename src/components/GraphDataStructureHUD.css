@@ -1,0 +1,268 @@
+/* ═══════════════════════════════════════════════════════════
+   GraphDataStructureHUD.css
+   Unified Dual-Card HUD for Queue/Stack & Visited Order
+   ═══════════════════════════════════════════════════════════ */
+
+.gdsh {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 620px;
+  margin-top: 0.15rem;
+}
+
+@media (max-width: 640px) {
+  .gdsh {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+}
+
+.gdsh__card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.gdsh__card--pipeline {
+  border-top: 2.5px solid var(--viz-comparing);
+}
+
+.gdsh__card--visited {
+  border-top: 2.5px solid var(--viz-sorted);
+}
+
+/* Header Row */
+
+.gdsh__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 20px;
+}
+
+.gdsh__title-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gdsh__icon {
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.gdsh__icon--visited {
+  color: var(--viz-sorted);
+}
+
+.gdsh__title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.gdsh__badge--sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.08rem 0.35rem;
+  border-radius: 3px;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--viz-comparing);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.gdsh__count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.gdsh__count--visited {
+  color: var(--viz-sorted);
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.25);
+}
+
+/* Track / Flow Container */
+
+.gdsh__track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  min-height: 48px;
+  padding: 0.35rem 0.5rem;
+  background: var(--bg-elevated);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+
+.gdsh__flow-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.gdsh__flow-hint--in {
+  color: var(--accent);
+}
+
+.gdsh__flow-hint--out {
+  color: var(--viz-comparing);
+}
+
+.gdsh__flow-hint--stack {
+  color: var(--viz-comparing);
+}
+
+.gdsh__cells {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex: 1;
+  flex-wrap: wrap;
+  min-height: 36px;
+}
+
+/* Individual Queue / Stack Cell */
+.gdsh__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+}
+
+.gdsh__cell-box {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--viz-comparing);
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--viz-comparing);
+  font-size: 0.88rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.gdsh__cell--primary .gdsh__cell-box {
+  background: rgba(245, 158, 11, 0.25);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+  transform: scale(1.06);
+}
+
+.gdsh__cell-label {
+  font-size: 0.52rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--viz-comparing);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+/* Visited Track & List */
+
+.gdsh__visited-track {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.35rem 0.5rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+
+.gdsh__visited-list {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.gdsh__visited-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.gdsh__arrow {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  user-select: none;
+  opacity: 0.6;
+}
+
+.gdsh__visited-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--viz-sorted);
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--viz-sorted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 800;
+  user-select: none;
+  animation: gvVisitedPop 0.25s ease both;
+}
+
+.gdsh__visited-num {
+  line-height: 1;
+}
+
+.gdsh__visited-order-tag {
+  font-size: 0.55rem;
+  font-weight: 600;
+  opacity: 0.75;
+  color: var(--text-secondary);
+}
+
+/* Empty State */
+
+.gdsh__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 0.3rem 0;
+  user-select: none;
+}

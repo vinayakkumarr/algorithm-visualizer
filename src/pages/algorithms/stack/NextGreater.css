@@ -1,0 +1,217 @@
+/* NextGreater.css */
+
+.nge-studio-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.nge-info-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.nge-info-card {
+  background: var(--card-bg, #1a1e24);
+  border: 1px solid var(--border-color, #2a303c);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nge-info-card--accent {
+  border-color: var(--accent-color, #3b82f6);
+}
+
+.nge-info-card__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #8b949e);
+}
+
+.nge-info-card__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-main, #f0f6fc);
+}
+
+/* Arena */
+.nge-arena {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 1.5rem;
+  background: var(--card-bg, #1a1e24);
+  border: 1px solid var(--border-color, #2a303c);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  min-height: 260px;
+}
+
+@media (max-width: 768px) {
+  .nge-arena {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nge-section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted, #8b949e);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Array & Table */
+.nge-main-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.nge-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px dashed var(--border-color, #2a303c);
+}
+
+.nge-cell {
+  width: 75px;
+  padding: 0.5rem;
+  background: var(--bg-card, #21262d);
+  border: 2px solid var(--border-color, #30363d);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.nge-cell--current {
+  border-color: #f59e0b;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.nge-cell--resolved {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.nge-cell__idx {
+  font-size: 0.65rem;
+  color: var(--text-muted, #8b949e);
+  font-family: var(--font-mono, monospace);
+}
+
+.nge-cell__val {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-main, #f0f6fc);
+}
+
+.nge-cell__ans {
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--border-color, #30363d);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  font-family: var(--font-mono, monospace);
+}
+
+.nge-cell__ans-label {
+  color: var(--text-muted, #8b949e);
+}
+
+.nge-cell__ans-val {
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* Stack */
+.nge-stack-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.nge-stack-well {
+  width: 100%;
+  min-height: 180px;
+  max-height: 220px;
+  border-left: 3px solid var(--border-color, #30363d);
+  border-right: 3px solid var(--border-color, #30363d);
+  border-bottom: 3px solid var(--border-color, #30363d);
+  border-radius: 0 0 6px 6px;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+}
+
+.nge-stack-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted, #8b949e);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.nge-stack-items {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.nge-stack-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.75rem;
+  background: #3b82f6;
+  border: 1px solid #60a5fa;
+  border-radius: 4px;
+  color: #fff;
+  font-family: var(--font-mono, monospace);
+}
+
+.nge-stack-item--top {
+  background: #f59e0b;
+  border-color: #fbbf24;
+}
+
+.nge-stack-item__val {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.nge-stack-item__idx {
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+.nge-stack-base {
+  font-size: 0.7rem;
+  color: var(--text-muted, #8b949e);
+  margin-top: 0.35rem;
+  text-align: center;
+}

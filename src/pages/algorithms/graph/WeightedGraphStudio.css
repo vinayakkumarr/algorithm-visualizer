@@ -1,0 +1,167 @@
+/* WeightedGraphStudio.css */
+
+.wg-studio-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.wg-info-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.wg-info-card {
+  background: var(--card-bg, #1a1e24);
+  border: 1px solid var(--border-color, #2a303c);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.wg-info-card--accent {
+  border-color: #f59e0b;
+}
+
+.wg-info-card__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #8b949e);
+}
+
+.wg-info-card__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-main, #f0f6fc);
+}
+
+/* Arena */
+.wg-arena {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  background: var(--card-bg, #1a1e24);
+  border: 1px solid var(--border-color, #2a303c);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 860px) {
+  .wg-arena {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wg-canvas-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wg-svg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+}
+
+.wg-edge {
+  stroke: var(--border-color, #484f58);
+  stroke-width: 3;
+  transition: all 0.2s ease;
+}
+
+.wg-edge--active {
+  stroke: #f59e0b;
+  stroke-width: 5;
+}
+
+.wg-weight-badge-bg {
+  fill: #0d1117;
+  stroke: var(--border-color, #30363d);
+  stroke-width: 1;
+}
+
+.wg-weight-text {
+  font-size: 11px;
+  fill: #58a6ff;
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+}
+
+.wg-node {
+  fill: #21262d;
+  stroke: #30363d;
+  stroke-width: 3;
+  transition: all 0.2s ease;
+}
+
+.wg-node--current {
+  stroke: #f59e0b;
+  fill: rgba(245, 158, 11, 0.25);
+}
+
+.wg-node--visited {
+  stroke: #238636;
+  fill: rgba(35, 134, 54, 0.25);
+}
+
+.wg-node-id {
+  font-size: 13px;
+  font-weight: 700;
+  fill: #f0f6fc;
+  font-family: var(--font-mono, monospace);
+}
+
+.wg-node-dist {
+  font-size: 10px;
+  font-weight: 600;
+  fill: #8b949e;
+  font-family: var(--font-mono, monospace);
+}
+
+/* Table */
+.wg-hud-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.wg-section-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted, #8b949e);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.wg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-family: var(--font-mono, monospace);
+}
+
+.wg-table th,
+.wg-table td {
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #30363d);
+}
+
+.wg-table th {
+  color: var(--text-muted, #8b949e);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.wg-tr--active {
+  background: rgba(245, 158, 11, 0.15);
+}

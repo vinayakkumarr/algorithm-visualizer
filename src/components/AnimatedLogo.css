@@ -1,0 +1,57 @@
+.av-logo-container {
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+}
+
+.av-svg-mark rect,
+.av-svg-mark circle {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes blockReveal {
+  0%   { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes targetFound {
+  0%   { opacity: 0; transform: scale(0.3); }
+  60%  { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.av-svg-mark .block-1 { animation: blockReveal 0.3s ease-out forwards; animation-delay: 0.0s; }
+.av-svg-mark .block-2 { animation: blockReveal 0.3s ease-out forwards; animation-delay: 0.1s; }
+.av-svg-mark .block-3 { animation: blockReveal 0.3s ease-out forwards; animation-delay: 0.2s; }
+.av-svg-mark .block-4 { animation: blockReveal 0.3s ease-out forwards; animation-delay: 0.3s; }
+.av-svg-mark .block-5 { animation: blockReveal 0.3s ease-out forwards; animation-delay: 0.4s; }
+.av-svg-mark .block-6 { animation: blockReveal 0.3s ease-out forwards; animation-delay: 0.5s; }
+.av-svg-mark .target-node {
+  animation: targetFound 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.65s;
+}
+
+/* Elegant Typography */
+
+.av-wordmark {
+  font-size: 58px;
+}
+
+.av-bold {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  fill: var(--logo-text-color, #000000);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.av-light {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  fill: var(--logo-subtext-color, #666666);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}

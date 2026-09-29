@@ -1,0 +1,348 @@
+/* GraphVisualizer.css  +  Graph page (BFS/DFS) shared styles */
+
+/* Animations */
+
+@keyframes gvVisitedPop {
+  0%   { transform: scale(0.8); }
+  60%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* SVG wrapper */
+
+/* align-self:center overrides VisualizerLayout canvas flex-end */
+.gv-wrapper {
+  align-self: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.gv-svg {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  max-height: 290px;
+  height: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Edges */
+
+.gv-edge {
+  stroke:       var(--border);
+  stroke-width: 2;
+  transition:   stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+.gv-edge--visited {
+  stroke:       var(--viz-sorted);
+  stroke-width: 2.5;
+}
+
+/* Node base */
+
+.gv-node circle {
+  fill:         rgba(59, 130, 246, 0.12);
+  stroke:       var(--viz-default);
+  stroke-width: 2.5;
+  transition:
+    fill         0.22s ease,
+    stroke       0.22s ease,
+    stroke-width 0.22s ease,
+    filter       0.22s ease;
+}
+
+.gv-node__text {
+  font-size:      13px;
+  font-weight:    800;
+  font-family:    'JetBrains Mono', monospace;
+  fill:           var(--viz-default);
+  pointer-events: none;
+  user-select:    none;
+  transition:     fill 0.22s ease;
+}
+
+/* Pending (in queue / on stack) */
+
+.gv-node--pending circle {
+  fill:   rgba(245, 158, 11, 0.15);
+  stroke: var(--viz-comparing);
+}
+
+.gv-node--pending .gv-node__text {
+  fill: var(--viz-comparing);
+}
+
+/* Current (being dequeued / popped) */
+
+.gv-node--current circle {
+  fill:         rgba(245, 158, 11, 0.28);
+  stroke:       var(--viz-comparing);
+  stroke-width: 3.5;
+  filter:       drop-shadow(0 0 8px rgba(245, 158, 11, 0.7));
+  /* no infinite animation — static drop-shadow is sufficient */
+}
+
+.gv-node--current .gv-node__text {
+  fill: var(--viz-comparing);
+}
+
+/* Visited (fully processed) */
+
+.gv-node--visited circle {
+  fill:   rgba(34, 197, 94, 0.18);
+  stroke: var(--viz-sorted);
+  filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.4));
+  /* pop when node first turns green */
+  transform-box:    fill-box;
+  transform-origin: center;
+  animation:        gvVisitedPop 0.35s ease both;
+}
+
+.gv-node--visited .gv-node__text {
+  fill: var(--viz-sorted);
+}
+
+/* Graph page shared styles (graph-canvas, gds-*, etc.) */
+
+/* Canvas wrapper (inside VisualizerLayout children) */
+
+.graph-canvas {
+  align-self: stretch;
+  width:      100%;
+  display:    flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Start-node selector */
+
+.gv-start-row {
+  display:     flex;
+  align-items: center;
+  gap:         0.4rem;
+  flex-wrap:   wrap;
+  justify-content: center;
+}
+
+.gv-start-label {
+  font-size:   0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color:       var(--text-muted);
+  white-space: nowrap;
+}
+
+.gv-start-btn {
+  width:         34px;
+  height:        34px;
+  border-radius: 50%;
+  border:        2px solid var(--border);
+  background:    var(--bg-elevated);
+  color:         var(--text-secondary);
+  font-size:     0.82rem;
+  font-weight:   700;
+  font-family:   'JetBrains Mono', monospace;
+  cursor:        pointer;
+  transition:    all var(--transition);
+  display:       flex;
+  align-items:   center;
+  justify-content: center;
+}
+
+.gv-start-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color:        var(--accent);
+}
+
+.gv-start-btn--active {
+  background:   var(--accent);
+  border-color: var(--accent);
+  color:        #fff;
+  box-shadow:   0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+.gv-start-btn:disabled {
+  opacity: 0.45;
+  cursor:  not-allowed;
+}
+
+/* Data structure display panel (Queue / Stack) */
+
+.gds-panel {
+  display:     flex;
+  align-items: center;
+  gap:         0.6rem;
+  flex-wrap:   wrap;
+  justify-content: center;
+  padding:     0.5rem 1rem;
+  border-radius: var(--radius-md);
+  border:      1px solid var(--border);
+  background:  var(--bg-surface);
+  min-height:  54px;
+  width:       100%;
+  max-width:   540px;
+}
+
+.gds-panel__label {
+  font-size:   0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color:       var(--text-muted);
+  white-space: nowrap;
+  min-width:   48px;
+}
+
+.gds-items {
+  display:     flex;
+  align-items: center;
+  gap:         0.3rem;
+  flex-wrap:   wrap;
+}
+
+/* Individual node box in queue/stack */
+.gds-node {
+  display:       flex;
+  flex-direction: column;
+  align-items:   center;
+  gap:           2px;
+}
+
+.gds-node__box {
+  width:         36px;
+  height:        36px;
+  border-radius: var(--radius-sm);
+  border:        2px solid var(--viz-comparing);
+  background:    rgba(245, 158, 11, 0.12);
+  color:         var(--viz-comparing);
+  font-size:     0.9rem;
+  font-weight:   700;
+  font-family:   'JetBrains Mono', monospace;
+  display:       flex;
+  align-items:   center;
+  justify-content: center;
+  transition:    all 0.18s ease;
+  user-select:   none;
+}
+
+.gds-node--tip .gds-node__box {
+  border-color: var(--viz-comparing);
+  background:   rgba(245, 158, 11, 0.22);
+  transform:    scale(1.08);
+  box-shadow:   0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+.gds-node__tip-label {
+  font-size:   0.55rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color:       var(--viz-comparing);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.gds-separator {
+  color:     var(--text-muted);
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+.gds-empty {
+  font-size:  0.78rem;
+  color:      var(--text-muted);
+  font-style: italic;
+}
+
+/* Traversal order strip */
+
+.gds-order {
+  display:     flex;
+  align-items: center;
+  gap:         0.3rem;
+  flex-wrap:   wrap;
+  justify-content: center;
+  font-size:   0.82rem;
+  min-height:  28px;
+}
+
+.gds-order__label {
+  font-size:   0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color:       var(--text-muted);
+  white-space: nowrap;
+}
+
+.gds-order__node {
+  width:         28px;
+  height:        28px;
+  border-radius: 50%;
+  border:        2px solid var(--viz-sorted);
+  background:    rgba(34, 197, 94, 0.12);
+  color:         var(--viz-sorted);
+  font-size:     0.8rem;
+  font-weight:   700;
+  font-family:   'JetBrains Mono', monospace;
+  display:       inline-flex;
+  align-items:   center;
+  justify-content: center;
+  user-select:   none;
+}
+
+.gds-order__arrow {
+  color:       var(--text-muted);
+  font-size:   0.7rem;
+  user-select: none;
+}
+
+/* Custom graph legend */
+
+.graph-legend {
+  display:     flex;
+  gap:         1.2rem;
+  flex-wrap:   wrap;
+  align-items: center;
+  justify-content: center;
+  padding:     0.55rem 1rem;
+  border-radius: var(--radius-md);
+  border:      1px solid var(--border);
+  background:  var(--bg-surface);
+  width:       100%;
+  max-width:   540px;
+}
+
+.graph-legend__item {
+  display:     flex;
+  align-items: center;
+  gap:         0.4rem;
+  font-size:   0.72rem;
+  font-weight: 500;
+  color:       var(--text-secondary);
+  white-space: nowrap;
+}
+
+.graph-legend__dot {
+  width:         13px;
+  height:        13px;
+  border-radius: 50%;
+  border:        2.5px solid;
+  flex-shrink:   0;
+}
+
+.graph-legend__dot--default { border-color: var(--viz-default);   background: rgba(59,  130, 246, 0.15); }
+.graph-legend__dot--pending { border-color: var(--viz-comparing); background: rgba(245, 158,  11, 0.15); }
+.graph-legend__dot--current { border-color: var(--viz-comparing); background: rgba(245, 158,  11, 0.28); }
+.graph-legend__dot--visited { border-color: var(--viz-sorted);    background: rgba(34,  197,  94, 0.2);  }
+
+/* Responsive */
+
+@media (max-width: 500px) {
+  .gds-panel { padding: 0.4rem 0.6rem; }
+  .graph-legend { gap: 0.75rem; }
+}

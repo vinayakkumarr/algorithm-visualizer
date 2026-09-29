@@ -1,0 +1,136 @@
+/* HeapStudio.css */
+
+.heap-studio-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.heap-info-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.heap-info-card {
+  background: var(--card-bg, #1a1e24);
+  border: 1px solid var(--border-color, #2a303c);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.heap-info-card--accent {
+  border-color: #3b82f6;
+}
+
+.heap-info-card__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #8b949e);
+}
+
+.heap-info-card__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-main, #f0f6fc);
+}
+
+/* Canvas Card */
+.heap-canvas-card {
+  background: var(--card-bg, #1a1e24);
+  border: 1px solid var(--border-color, #2a303c);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  min-height: 220px;
+}
+
+.heap-canvas-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted, #8b949e);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.heap-nodes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.heap-node {
+  width: 90px;
+  height: 90px;
+  background: var(--bg-card, #21262d);
+  border: 2px solid var(--border-color, #30363d);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.heap-node--root {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.heap-node--active {
+  border-color: #f59e0b;
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.heap-node--swap {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.heap-node__idx {
+  font-size: 0.6rem;
+  color: var(--text-muted, #8b949e);
+  font-family: var(--font-mono, monospace);
+}
+
+.heap-node__val {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-main, #f0f6fc);
+}
+
+.heap-node__meta {
+  font-size: 0.55rem;
+  color: var(--text-muted, #8b949e);
+  font-family: var(--font-mono, monospace);
+}
+
+.heap-op-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.heap-input {
+  width: 75px;
+  padding: 0.4rem 0.6rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color, #30363d);
+  border-radius: 4px;
+  color: var(--text-main, #f0f6fc);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.875rem;
+}

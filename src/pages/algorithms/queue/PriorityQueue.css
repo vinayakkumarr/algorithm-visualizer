@@ -1,0 +1,166 @@
+/* PriorityQueue.css */
+
+.pq-studio-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.pq-info-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pq-info-card {
+  background: var(--card-bg, #1a1e24);
+  border: 1px solid var(--border-color, #2a303c);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pq-info-card--accent {
+  border-color: #3b82f6;
+}
+
+.pq-info-card__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #8b949e);
+}
+
+.pq-info-card__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-main, #f0f6fc);
+}
+
+/* Canvas Card */
+.pq-canvas-card {
+  background: var(--card-bg, #1a1e24);
+  border: 1px solid var(--border-color, #2a303c);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  min-height: 220px;
+}
+
+.pq-canvas-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted, #8b949e);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pq-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  color: var(--text-muted, #8b949e);
+  font-style: italic;
+}
+
+.pq-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pq-node-card {
+  width: 140px;
+  background: var(--bg-card, #21262d);
+  border: 2px solid var(--border-color, #30363d);
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.pq-node-card--root {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.pq-node-card--active {
+  border-color: #f59e0b;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.pq-node-card--swap {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.pq-node-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pq-node-card__idx {
+  font-size: 0.65rem;
+  color: var(--text-muted, #8b949e);
+  font-family: var(--font-mono, monospace);
+}
+
+.pq-node-card__pri {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+
+.pq-node-card__val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main, #f0f6fc);
+}
+
+.pq-node-card__family {
+  display: flex;
+  gap: 0.35rem;
+  font-size: 0.6rem;
+  color: var(--text-muted, #8b949e);
+  font-family: var(--font-mono, monospace);
+  margin-top: 0.2rem;
+}
+
+.pq-op-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pq-input {
+  padding: 0.4rem 0.6rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color, #30363d);
+  border-radius: 4px;
+  color: var(--text-main, #f0f6fc);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.875rem;
+}
+
+.pq-input--name {
+  width: 140px;
+}
+
+.pq-input--pri {
+  width: 70px;
+}

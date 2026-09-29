@@ -1,0 +1,190 @@
+/* Theme Tokens */
+:root[data-theme="light"],
+:root {
+  /* Backgrounds */
+  --bg-base:        #f1f5f9;
+  --bg-surface:     #ffffff;
+  --bg-elevated:    #e2e8f0;
+  --bg-overlay:     rgba(0, 0, 0, 0.04);
+
+  /* Text */
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-muted:     #4b5563;
+
+  /* Accent */
+  --accent:         #007680;
+  --accent-hover:   #006470;
+  --accent-glow:    rgba(0, 118, 128, 0.18);
+
+  /* Success / Warning */
+  --success:        #22c55e;
+  --warning:        #f59e0b;
+  --danger:         #ef4444;
+
+  /* Borders */
+  --border:         rgba(0, 0, 0, 0.1);
+  --border-focus:   var(--accent);
+
+  /* Navbar */
+  --navbar-bg:      rgba(241, 245, 249, 0.9);
+  --navbar-height:  60px;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.16);
+
+  /* Transitions */
+  --transition: 0.2s ease;
+
+  /* Spacing scale */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-8:  48px;
+  --space-10: 64px;
+
+  /* Border radius system */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+:root[data-theme="dark"] {
+  --bg-base:        #0d0d0f;
+  --bg-surface:     #161618;
+  --bg-elevated:    #222226;
+  --bg-overlay:     rgba(255, 255, 255, 0.04);
+
+  --text-primary:   #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted:     #8b909e;
+
+  --accent:         #00BFCC;
+  --accent-hover:   #00A8B5;
+  --accent-glow:    rgba(0, 191, 204, 0.22);
+
+  --border:         rgba(255, 255, 255, 0.08);
+  --navbar-bg:      rgba(13, 13, 15, 0.85);
+
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  /* Push content below the fixed navbar */
+  padding-top: var(--navbar-height);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Page transition */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: pageFadeIn 0.18s ease both;
+}
+
+/* Skip to main content link (Accessibility) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.6rem 1.1rem;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  top: 0.75rem;
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+/* Route Fallback */
+.page-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--navbar-height));
+  width: 100%;
+}
+
+.page-fallback__spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:       0.01ms !important;
+    animation-iteration-count: 1     !important;
+    transition-duration:      0.01ms !important;
+    scroll-behavior:          auto   !important;
+  }
+}

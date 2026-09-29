@@ -1,0 +1,126 @@
+/* PseudocodeViewer.css — Code tracer panel synchronized with steps */
+
+
+.pv {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition);
+}
+
+.pv__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.9rem;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pv__title {
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pv__badge {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: none;
+  background: var(--accent-glow);
+  color: var(--accent);
+  border: 1px solid rgba(0, 191, 204, 0.3);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+}
+
+.pv__content {
+  overflow-y: auto;
+  overflow-x: auto;
+  max-height: 280px;
+  padding: 0.5rem 0 0.65rem;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.77rem;
+  line-height: 1.55;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* Custom scrollbar */
+.pv__content::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.pv__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pv__content::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+.pv__content::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.pv__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pv__line {
+  display: flex;
+  align-items: baseline;
+  padding: 0.22rem 0.75rem 0.22rem 0.5rem;
+  border-left: 3px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+  opacity: 0.72;
+  white-space: pre;
+  min-width: max-content;
+}
+
+.pv__line-num {
+  width: 1.25rem;
+  flex-shrink: 0;
+  text-align: right;
+  margin-right: 0.55rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  user-select: none;
+}
+
+.pv__line-code {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--text-secondary);
+}
+
+/* Active Line highlight */
+.pv__line--active {
+  opacity: 1;
+  background: var(--accent-glow);
+  border-left-color: var(--accent);
+}
+
+.pv__line--active .pv__line-num {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.pv__line--active .pv__line-code {
+  color: var(--text-primary);
+  font-weight: 600;
+}

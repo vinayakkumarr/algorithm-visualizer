@@ -1,0 +1,498 @@
+/* ═══════════════════════════════════════════════════════════
+   LinkedListVisualizer.css
+   Horizontal [data|next] → [data|next] → NULL diagram
+═══════════════════════════════════════════════════════════ */
+
+/* Outer wrapper */
+
+.ll-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: center;
+  width: 100%;
+  overflow-x: auto;
+  padding: 0.5rem 0.75rem 1.25rem;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  gap: 1rem;
+}
+
+/* Empty state */
+
+.ll-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 120px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  gap: 0.5rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.ll-empty__icon {
+  font-size: 1.75rem;
+  opacity: 0.6;
+}
+
+.ll-empty__text {
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Floating node shelf (during insertion) */
+
+.ll-floating-shelf {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-surface);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.5rem;
+}
+
+.ll-floating-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ll-cell--floating .ll-node {
+  margin-top: 24px;
+}
+
+/* Horizontal list */
+
+.ll-list {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  min-width: max-content;
+  padding-right: 2.5rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Cell (label + node + connector) */
+
+.ll-cell {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  position: relative;
+}
+
+/* Label row above each node */
+
+.ll-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: -46px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  gap: 2px;
+}
+
+.ll-lbl {
+  font-size: 0.6rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  white-space: nowrap;
+  display: block;
+  min-height: 12px;
+}
+
+/* Semantic Badges */
+.ll-lbl--head {
+  color: var(--accent);
+}
+
+.ll-lbl--tail {
+  color: var(--text-secondary);
+}
+
+.ll-lbl--curr {
+  color: var(--viz-comparing);
+  animation: currBounce 0.8s ease infinite alternate;
+}
+
+.ll-lbl--prev {
+  color: #a855f7; /* restrained purple */
+}
+
+.ll-lbl--next {
+  color: #06b6d4; /* cyan */
+}
+
+.ll-lbl--slow {
+  color: #10b981; /* emerald */
+  font-weight: 700;
+}
+
+.ll-lbl--fast {
+  color: #f97316; /* orange */
+  font-weight: 700;
+}
+
+.ll-lbl--new {
+  color: var(--accent);
+}
+
+.ll-lbl--done {
+  color: var(--viz-sorted);
+  font-size: 0.72rem;
+}
+
+@keyframes currBounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(3px); }
+}
+
+/* Node box */
+
+.ll-node {
+  display: flex;
+  align-items: stretch;
+  height: 56px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border);
+  background: var(--bg-elevated);
+  overflow: hidden;
+  transition:
+    border-color  0.18s ease,
+    background    0.18s ease,
+    box-shadow    0.18s ease,
+    transform     0.18s ease;
+  flex-shrink: 0;
+  margin-top: 48px;
+}
+
+/* Data cell */
+.ll-node__data {
+  width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  transition: color 0.18s ease;
+  user-select: none;
+}
+
+/* Pointer cell */
+.ll-node__ptr {
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-left: 2px solid var(--border);
+  transition: border-color 0.18s ease, background 0.18s ease;
+  flex-shrink: 0;
+}
+
+.ll-ptr-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+  transition: background 0.18s ease;
+}
+
+.ll-ptr-arrow {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1;
+  user-select: none;
+  transition: color 0.18s ease;
+}
+
+/* State modifiers */
+
+.ll-node--current {
+  border-color: var(--viz-comparing);
+  background: rgba(245, 158, 11, 0.1);
+  transform: translateY(-4px);
+  box-shadow:
+    0 6px 20px rgba(245, 158, 11, 0.35),
+    0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+.ll-node--current .ll-node__data {
+  color: var(--viz-comparing);
+}
+
+.ll-node--current .ll-node__ptr {
+  border-color: var(--viz-comparing);
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.ll-node--current .ll-ptr-dot,
+.ll-node--current .ll-ptr-arrow {
+  background: var(--viz-comparing);
+  color: var(--viz-comparing);
+}
+
+.ll-node--visited {
+  border-color: var(--viz-sorted);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.ll-node--visited .ll-node__data {
+  color: var(--viz-sorted);
+}
+
+.ll-node--visited .ll-node__ptr {
+  border-color: var(--viz-sorted);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.ll-node--visited .ll-ptr-dot {
+  background: var(--viz-sorted);
+}
+
+.ll-node--visited .ll-ptr-arrow {
+  color: var(--viz-sorted);
+}
+
+.ll-node--target {
+  border-color: #ef4444; /* red/amber target */
+  background: rgba(239, 68, 68, 0.1);
+  border-style: dashed;
+}
+
+.ll-node--target .ll-node__data {
+  color: #ef4444;
+}
+
+.ll-node--new {
+  border-color: var(--accent);
+  background: rgba(0, 191, 204, 0.08);
+  border-style: dashed;
+}
+
+.ll-node--new .ll-node__data {
+  color: var(--accent);
+}
+
+.ll-node--slow {
+  border-color: #10b981;
+}
+
+.ll-node--fast {
+  border-color: #f97316;
+}
+
+/* Connector arrow between nodes */
+
+.ll-connector {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 56px;
+  margin-top: 48px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.ll-connector__line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 10px;
+  height: 2px;
+  background: var(--border);
+  transform: translateY(-50%);
+  transition: background 0.18s ease;
+}
+
+.ll-connector__head {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--border);
+  line-height: 1;
+  transition: color 0.18s ease;
+  user-select: none;
+}
+
+.ll-connector--active .ll-connector__line {
+  background: var(--viz-sorted);
+}
+
+.ll-connector--active .ll-connector__head {
+  color: var(--viz-sorted);
+}
+
+.ll-connector--partial .ll-connector__line {
+  background: var(--viz-comparing);
+}
+
+.ll-connector--partial .ll-connector__head {
+  color: var(--viz-comparing);
+}
+
+.ll-connector--cycle .ll-connector__line {
+  border-top: 2px dashed #f97316;
+  background: transparent;
+}
+
+.ll-connector--cycle .ll-connector__head {
+  color: #f97316;
+}
+
+/* NULL terminal cell */
+
+.ll-null-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ll-null-cell .ll-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 48px;
+  justify-content: flex-end;
+  padding-bottom: 4px;
+  position: static;
+}
+
+.ll-null {
+  height: 56px;
+  padding: 0 14px;
+  border-radius: var(--radius-md);
+  border: 2px dashed var(--border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  user-select: none;
+  transition:
+    border-color  0.18s ease,
+    background    0.18s ease,
+    color         0.18s ease,
+    box-shadow    0.18s ease;
+}
+
+.ll-null--active {
+  border-color: var(--viz-sorted);
+  border-style: solid;
+  background: rgba(34, 197, 94, 0.08);
+  color: var(--viz-sorted);
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
+}
+
+/* Cycle loopback banner */
+
+.ll-cycle-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.ll-cycle-loop-icon {
+  font-size: 1.1rem;
+  color: #f97316;
+}
+
+/* Canvas wrapper (inside VisualizerLayout) */
+
+.ll-canvas {
+  align-self: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Status message */
+
+.ll-status {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-style: italic;
+  min-height: 20px;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.ll-status--current {
+  color: var(--viz-comparing);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.ll-status--done {
+  color: var(--viz-sorted);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+  .ll-node {
+    height: 48px;
+  }
+
+  .ll-node__data {
+    width: 40px;
+    font-size: 0.88rem;
+  }
+
+  .ll-node__ptr {
+    width: 28px;
+  }
+
+  .ll-connector {
+    width: 28px;
+    height: 48px;
+  }
+
+  .ll-null {
+    height: 48px;
+    font-size: 0.68rem;
+    padding: 0 10px;
+  }
+}

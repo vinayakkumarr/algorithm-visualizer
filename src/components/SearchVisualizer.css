@@ -1,0 +1,323 @@
+/* SearchVisualizer.css — numbered-box grid for search pages */
+
+/* CSS color tokens (mirror viz palette) */
+:root {
+  --sv-default-bg:     rgba(59, 130, 246, 0.12);
+  --sv-default-border: var(--viz-default);
+  --sv-default-text:   var(--viz-default);
+
+  --sv-checking-bg:     rgba(245, 158, 11, 0.15);
+  --sv-checking-border: var(--viz-comparing);
+  --sv-checking-text:   var(--viz-comparing);
+
+  --sv-found-bg:     rgba(34, 197, 94, 0.18);
+  --sv-found-border: var(--viz-sorted);
+  --sv-found-text:   var(--viz-sorted);
+
+  --sv-elim-bg:     rgba(100, 116, 139, 0.08);
+  --sv-elim-border: #475569;
+  --sv-elim-text:   #475569;
+
+  --sv-hint-bg:     rgba(59, 130, 246, 0.06);
+  --sv-hint-border: rgba(59, 130, 246, 0.35);
+}
+
+/* Container */
+
+/*
+  Outer wrapper fills the VisualizerLayout canvas.
+  align-self:center overrides the canvas's align-items:flex-end
+  so the grid sits in the middle rather than at the bottom.
+*/
+.search-visualizer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 0.5rem 0.25rem;
+  scroll-behavior: smooth;
+}
+
+/* Cell (index label + box + pointer labels) */
+
+.sv-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.sv-cell__index {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Box */
+
+.sv-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--sv-default-border);
+  background: var(--sv-default-bg);
+  color: var(--sv-default-text);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  line-height: 1;
+  user-select: none;
+
+  transition:
+    background-color  0.15s ease,
+    border-color      0.15s ease,
+    color             0.15s ease,
+    transform         0.15s ease,
+    box-shadow        0.15s ease;
+}
+
+/* State modifiers */
+
+.sv-box--checking {
+  background: var(--sv-checking-bg);
+  border-color: var(--sv-checking-border);
+  color: var(--sv-checking-text);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+}
+
+.sv-box--found {
+  background: var(--sv-found-bg);
+  border-color: var(--sv-found-border);
+  color: var(--sv-found-text);
+  transform: translateY(-6px) scale(1.14);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.45);
+  animation: foundPulse 0.5s ease;
+}
+
+.sv-box--eliminated {
+  background: var(--sv-elim-bg);
+  border-color: var(--sv-elim-border);
+  color: var(--sv-elim-text);
+  opacity: 0.45;
+}
+
+/* Subtle hint: default-state box whose value equals the target */
+.sv-box--target-hint {
+  background: var(--sv-hint-bg);
+  border-color: var(--sv-hint-border);
+}
+
+/* Found animation */
+
+@keyframes foundPulse {
+  0%   { transform: translateY(0) scale(1);    box-shadow: none; }
+  50%  { transform: translateY(-8px) scale(1.18); box-shadow: 0 12px 32px rgba(34, 197, 94, 0.55); }
+  100% { transform: translateY(-6px) scale(1.14); box-shadow: 0 8px 24px rgba(34, 197, 94, 0.45); }
+}
+
+/* Binary-search pointer labels */
+
+.sv-cell__pointers {
+  display: flex;
+  gap: 2px;
+  min-height: 16px;
+}
+
+.sv-ptr {
+  font-size: 0.58rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 1px 4px;
+  border-radius: 3px;
+  line-height: 1.4;
+  user-select: none;
+}
+
+.sv-ptr--low  { background: rgba(59, 130, 246, 0.2); color: var(--viz-default);   }
+.sv-ptr--mid  { background: rgba(245,158, 11, 0.2);  color: var(--viz-comparing); }
+.sv-ptr--high { background: rgba(239, 68, 68, 0.2);  color: var(--viz-swapping);  }
+
+/* Search canvas wrapper */
+/* Applied on the wrapping div inside VisualizerLayout canvas */
+
+.search-canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  align-self: stretch;  /* override canvas align-items:flex-end */
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+}
+
+/* Target input row */
+
+.search-target {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search-target__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.search-target__input {
+  width: 110px;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  text-align: center;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+
+  /* Remove spinners */
+  -moz-appearance: textfield;
+}
+.search-target__input::-webkit-outer-spin-button,
+.search-target__input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.search-target__input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.search-target__btn {
+  font-family: inherit;
+  padding: 0.38rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  line-height: 1.2;
+}
+
+.search-target__btn-icon {
+  color: var(--accent);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.search-target__btn:hover:not(:disabled) {
+  background: var(--bg-surface);
+  border-color: var(--accent);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 1px var(--accent-glow), 0 2px 6px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.search-target__btn:hover:not(:disabled) .search-target__btn-icon {
+  transform: scale(1.1);
+}
+
+.search-target__btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.search-target__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.search-target__btn--missing {
+  color: var(--text-muted);
+}
+
+.search-target__btn--missing:hover:not(:disabled) {
+  border-color: var(--viz-swapping);
+  color: var(--viz-swapping);
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2), 0 2px 6px rgba(239, 68, 68, 0.2);
+}
+
+/* Fallback for legacy class */
+.search-target__random {
+  padding: 0.38rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+
+.search-target__random:hover:not(:disabled) {
+  background: var(--bg-surface);
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.search-target__random:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Sorted badge (binary search) */
+
+.search-sorted-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  color: var(--viz-sorted);
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  user-select: none;
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+  .sv-box {
+    width: 36px;
+    height: 36px;
+    font-size: 0.72rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .search-visualizer {
+    gap: 5px;
+  }
+}

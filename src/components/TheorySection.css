@@ -1,0 +1,1107 @@
+/* TheorySection.css — Layout and styling for theory guides */
+
+.ts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 0.25rem 0 3rem;
+  animation: pageFadeIn 0.28s ease-out;
+}
+
+/* Section Headers & Typography */
+
+.ts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.ts-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.018em;
+  margin: 0;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.ts-section-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.ts-section-icon-wrap--warning {
+  color: #f59e0b;
+}
+
+/* 1. Hero & Core Introduction */
+
+.ts-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.ts-hero__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ts-hero__badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ts-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border: 1px solid var(--accent-glow);
+}
+
+.ts-badge--secondary {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+.ts-btn-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.42rem 0.95rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.ts-btn-switch:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+.ts-tagline {
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ts-hero__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.ts-intro-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-hover, var(--border));
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: border-color var(--transition);
+}
+
+.ts-intro-card--accent {
+  border-left: 3px solid var(--accent);
+}
+
+.ts-intro-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.ts-intro-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.ts-intro-icon-wrap--accent {
+  color: var(--accent);
+}
+
+.ts-intro-card__title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ts-intro-card__text {
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* 2. Mental Model & Visual Diagram */
+
+.ts-analogy-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid #f59e0b;
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.ts-analogy-box__title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #f59e0b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ts-analogy-box__text {
+  font-size: 0.88rem;
+  line-height: 1.62;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ts-diagram-container {
+  background: #0b132b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.ts-diagram-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #141f36;
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ts-diagram-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ts-diagram-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.ts-diagram-dot.red { background: #ef4444; opacity: 0.85; }
+.ts-diagram-dot.yellow { background: #f59e0b; opacity: 0.85; }
+.ts-diagram-dot.green { background: #10b981; opacity: 0.85; }
+
+.ts-diagram-title {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ts-diagram-content {
+  margin: 0;
+  padding: 1.25rem 1.35rem;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #38bdf8;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* 3. Core Concepts */
+
+.ts-concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.85rem;
+}
+
+.ts-concept-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.ts-concept-card:hover {
+  border-color: var(--border-hover, var(--border));
+  transform: translateY(-1px);
+}
+
+.ts-concept-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ts-concept-text {
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* 4. Step-by-Step Mechanics */
+
+.ts-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.ts-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.1rem;
+}
+
+.ts-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ts-step-text {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* 5. Worked Example */
+
+.ts-example-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ts-example-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.ts-example-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ts-example-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.ts-example-input {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.18rem 0.45rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+}
+
+.ts-example-goal {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ts-example-trace-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ts-trace-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+}
+
+.ts-trace-step__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ts-trace-step__name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ts-trace-step__state {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.15rem 0.45rem;
+  color: var(--viz-sorted);
+}
+
+.ts-trace-step__desc {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.ts-example-result {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent-glow);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+}
+
+.ts-example-result__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--viz-sorted);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.ts-example-result__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.ts-example-result__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+
+.ts-example-result__text {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* 6. Complexity Analysis */
+
+.ts-complexity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+
+.ts-comp-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ts-comp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ts-comp-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.ts-comp-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.ts-comp-val--best  { color: var(--viz-sorted); }
+.ts-comp-val--avg   { color: var(--accent); }
+.ts-comp-val--worst { color: var(--viz-swapping); }
+.ts-comp-val--space { color: #8b5cf6; }
+
+.ts-comp-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.ts-comp-extras {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ts-stability-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ts-stability-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ts-stability-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.ts-stability-badge--yes {
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--viz-sorted);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.ts-stability-badge--no {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--viz-swapping);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.ts-stability-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.ts-math-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ts-math-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.ts-math-text {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* 7. Common Pitfalls & Misconceptions */
+
+.ts-pitfalls-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ts-pitfall-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.95rem;
+}
+
+.ts-pitfall-myth,
+.ts-pitfall-reality {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.ts-pitfall-myth {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.ts-pitfall-reality {
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.ts-pitfall-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  width: fit-content;
+}
+
+.ts-pitfall-tag.myth {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.ts-pitfall-tag.reality {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.ts-pitfall-text {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* 8. Trade-offs (Pros & Cons) */
+
+.ts-pros-cons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.ts-pro-box,
+.ts-con-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ts-pro-box {
+  border-top: 3px solid #10b981;
+}
+
+.ts-con-box {
+  border-top: 3px solid #ef4444;
+}
+
+.ts-pro-title,
+.ts-con-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ts-icon-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ts-icon-pill--pro {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.ts-icon-pill--con {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.ts-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.ts-bullet-item {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.ts-bullet-item::before {
+  content: "•";
+  position: absolute;
+  left: 0.25rem;
+  color: var(--text-muted);
+}
+
+/* 9. Edge Cases Table */
+
+.ts-table-container {
+  overflow-x: auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.ts-edge-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.83rem;
+}
+
+.ts-edge-table th,
+.ts-edge-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.ts-edge-table th {
+  background: var(--bg-elevated);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.ts-edge-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ts-edge-table tbody tr:hover td {
+  background: var(--bg-elevated);
+}
+
+.ts-edge-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ts-edge-desc {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* 10. Real-World Applications */
+
+.ts-apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.85rem;
+}
+
+.ts-app-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ts-app-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ts-app-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* 11. Key Takeaways & Next Topics */
+
+.ts-section--summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.ts-takeaways-card,
+.ts-next-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ts-takeaways-title,
+.ts-next-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ts-takeaways-title svg {
+  color: var(--viz-sorted);
+}
+
+.ts-next-title svg {
+  color: var(--accent);
+}
+
+.ts-next-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ts-next-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.ts-next-item:hover {
+  border-color: var(--accent);
+  transform: translateX(3px);
+  background: var(--bg-surface);
+}
+
+.ts-next-item__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ts-next-name {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ts-next-arrow {
+  font-size: 0.88rem;
+  color: var(--accent);
+  transition: transform var(--transition);
+}
+
+.ts-next-item:hover .ts-next-arrow {
+  transform: translateX(3px);
+}
+
+.ts-next-reason {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* 4b. Pseudocode & Algorithmic Procedure */
+
+.ts-pseudocode-intro {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.ts-pseudo-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.25rem;
+}
+
+.ts-pseudo-tab {
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.38rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.ts-pseudo-tab:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-color: var(--border-hover, var(--border));
+}
+
+.ts-pseudo-tab--active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.ts-pseudo-tab--active:hover {
+  background: var(--accent);
+  color: #fff;
+  filter: brightness(1.08);
+}
+
+.ts-pseudo-container {
+  background: #090e1a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.ts-pseudo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: #111a2e;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ts-pseudo-header-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.ts-pseudo-title {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ts-pseudo-complexity {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.ts-pseudo-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.ts-pseudo-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.ts-pseudo-copy-btn--copied {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+.ts-pseudo-desc {
+  padding: 0.65rem 1.25rem 0.25rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #94a3b8;
+  background: #090e1a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ts-pseudo-code {
+  margin: 0;
+  padding: 1.25rem 1.35rem;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: #38bdf8;
+  white-space: pre;
+  overflow-x: auto;
+  background: #090e1a;
+}
+
+/* Responsive Media Queries */
+
+@media (max-width: 640px) {
+  .ts-hero {
+    padding: 1.15rem;
+  }
+
+  .ts-hero__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-pitfall-card {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-section--summary {
+    grid-template-columns: 1fr;
+  }
+}

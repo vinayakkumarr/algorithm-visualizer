@@ -1,0 +1,23 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Default to black squares for light mode browser tabs */
+    .block { fill: #000000; }
+    /* Automatically switch to white squares if the user's browser tab is dark */
+    @media (prefers-color-scheme: dark) {
+      .block { fill: #FFFFFF; }
+    }
+  </style>
+  
+  <!-- Level 1 -->
+  <rect class="block" x="64" y="0" width="56" height="56" />
+  <rect class="block" x="0" y="64" width="56" height="56" />
+  <rect class="block" x="64" y="64" width="56" height="56" />
+  
+  <!-- Level 2 -->
+  <rect class="block" x="32" y="0" width="24" height="24" />
+  <rect class="block" x="0" y="32" width="24" height="24" />
+  <rect class="block" x="32" y="32" width="24" height="24" />
+  
+  <!-- Target Node -->
+  <circle cx="12" cy="12" r="12" fill="#0055FF" />
+</svg>
