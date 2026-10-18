@@ -30,6 +30,10 @@
   --navbar-bg:      rgba(241, 245, 249, 0.9);
   --navbar-height:  60px;
 
+  /* Grid & Illuminator Theme Tokens */
+  --grid-line:      rgba(15, 23, 42, 0.048);
+  --grid-vignette:  rgba(241, 245, 249, 0.82);
+
   /* Shadows */
   --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.12);
@@ -70,6 +74,10 @@
 
   --border:         rgba(255, 255, 255, 0.08);
   --navbar-bg:      rgba(13, 13, 15, 0.85);
+
+  /* Grid & Illuminator Theme Tokens */
+  --grid-line:      rgba(255, 255, 255, 0.042);
+  --grid-vignette:  rgba(13, 13, 15, 0.88);
 
   --shadow-sm:  0 1px 2px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.04);
   --shadow-md:  0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
@@ -188,3 +196,85 @@ ul {
     scroll-behavior:          auto   !important;
   }
 }
+
+/* ==========================================================================
+   Archival Drafting Table Precision Grid & Kinetic Cell Illuminator Styles
+   ========================================================================== */
+
+/* Archival Graph Grid Texture with Center Spotlight Vignette (Theme-Aware) */
+.paper-canvas {
+  background-color: var(--bg-base);
+  background-image: 
+    radial-gradient(ellipse at 50% 25%, transparent 20%, var(--grid-vignette) 85%),
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+  background-position: center top, center top, center top;
+  transition: background-color var(--transition);
+}
+
+/* Tactile Stationery Card with Embossed Letterpress Bevel */
+.stationery-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 
+    0 1px 3px rgba(0, 0, 0, 0.05), 
+    0 8px 24px -4px rgba(0, 0, 0, 0.06);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.stationery-card:hover {
+  border-color: var(--accent);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.08), 
+    0 12px 32px -4px var(--accent-glow);
+}
+
+/* Executive Inset Button with Specular Rim Lighting */
+.btn-executive {
+  user-select: none;
+  background-color: var(--accent);
+  color: #FAFAF9;
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 
+    0 1px 2px 0 rgba(0, 0, 0, 0.1),
+    0 4px 12px -2px var(--accent-glow);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-executive:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.28), 
+    0 2px 4px 0 rgba(0, 0, 0, 0.15),
+    0 8px 20px -2px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.btn-executive:active:not(:disabled) {
+  transform: translateY(0.5px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Precision Grid Canvas & Structural Utilities */
+#gridCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.fixed { position: fixed; }
+.inset-0 { inset: 0; }
+.pointer-events-none { pointer-events: none; }
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.relative { position: relative; }
+.min-h-full { min-height: 100%; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+

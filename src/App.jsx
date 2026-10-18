@@ -116,7 +116,9 @@ export default function App() {
         <ScrollToTop />
         <Navbar />
         <ErrorBoundary>
-          <RouterContent />
+          <main className="relative z-10">
+            <RouterContent />
+          </main>
         </ErrorBoundary>
       </BrowserRouter>
     </ThemeProvider>
