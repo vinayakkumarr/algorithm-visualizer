@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import ErrorBoundary from "./components/ErrorBoundary";
+import PrecisionGrid from "./components/PrecisionGrid";
 
 import Home from "./pages/Home";
 
@@ -114,6 +115,7 @@ export default function App() {
           Skip to main content
         </a>
         <ScrollToTop />
+        <PrecisionGrid />
         <Navbar />
         <ErrorBoundary>
           <main className="relative z-10">

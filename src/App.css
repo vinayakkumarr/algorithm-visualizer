@@ -205,12 +205,8 @@ ul {
 /* Archival Graph Grid Texture with Center Spotlight Vignette (Theme-Aware) */
 .paper-canvas {
   background-color: var(--bg-base);
-  background-image: 
-    radial-gradient(ellipse at 50% 25%, transparent 20%, var(--grid-vignette) 85%),
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 100% 100%, 36px 36px, 36px 36px;
-  background-position: center top, center top, center top;
+  background-image: radial-gradient(ellipse at 50% 25%, transparent 20%, var(--grid-vignette) 85%);
+  background-attachment: fixed;
   transition: background-color var(--transition);
 }
 
