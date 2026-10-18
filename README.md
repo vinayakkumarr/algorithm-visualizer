@@ -2,6 +2,8 @@
 
 > Interactive algorithm and data-structure visualization with step-by-step execution, playback controls, synchronized pseudocode, and theory guides.
 
+**[Live Demo](https://algorithm-visualizer-web.vercel.app)** · **[Report Bug](https://github.com/vinayakkumarr/algorithm-visualizer/issues)**
+
 ---
 
 ## Overview
@@ -53,6 +55,7 @@ Instead of reading static code or tracing execution manually on paper, users can
 - **Complexity Breakdown**: Big-O complexity tables detailing Best Case, Average Case, Worst Case, Auxiliary Space, and Algorithm Stability.
 
 ### UI & Accessibility
+- **Archival Precision Grid**: Hardware VSync-synchronized 36px drafting grid with kinetic cell illuminations and diamond vertex reticles (active on Home catalog with 0% idle CPU hibernation).
 - **Light & Dark Theme**: Full theme support with seamless toggling and `localStorage` persistence.
 - **Responsive Layout**: Designed for mobile (375px+), tablet, and desktop viewports with sticky bottom controls on short displays.
 - **Keyboard Navigation & ARIA**: "Skip to main content" link, focus containment and Escape-key dismiss on modals, keyboard-accessible playback controls, and ARIA live regions for dynamic step announcements.
@@ -145,7 +148,8 @@ The codebase follows a modular React architecture that separates algorithm logic
 | **React Testing Library** | Component interaction testing |
 | **Playwright** | End-to-end browser test automation |
 | **Oxlint** | High-performance JavaScript/React linter |
-| **Fontsource** | Self-hosted typography (Inter, Syne, Cormorant Garamond) |
+| **@vercel/analytics** | Privacy-friendly web traffic and analytics telemetry |
+| **Fontsource** | Self-hosted typography (Inter, Syne, Cormorant Garamond, Instrument Serif) |
 
 ---
 
@@ -172,9 +176,11 @@ algorithm-visualizer/
 │   │   ├── linkedListEngine.js
 │   │   └── ...
 │   ├── components/                # Shared UI, stages, controls, and modals
+│   │   ├── AnimatedLogo.jsx
 │   │   ├── ArrayBars.jsx
 │   │   ├── CustomArrayModal.jsx
 │   │   ├── Navbar.jsx
+│   │   ├── PrecisionGrid.jsx
 │   │   ├── PseudocodeViewer.jsx
 │   │   ├── ThemeToggle.jsx
 │   │   ├── TheorySection.jsx
@@ -208,6 +214,7 @@ algorithm-visualizer/
 ├── LICENSE                        # MIT License
 ├── package.json                   # Project metadata and dependencies
 ├── playwright.config.js           # Playwright test configuration
+├── vercel.json                    # Vercel SPA routing and deployment configuration
 ├── vite.config.js                 # Vite build configuration
 └── vitest.config.js               # Vitest test configuration
 ```
